@@ -20,7 +20,7 @@ Si consiglia di formare gruppi (**massimo 4 persone per gruppo**) per velocizzar
 
 ## Valutazione
 
-Il progetto **vale fino a 10 punti** nella valutazione finale. Il punteggio rimanente è dato dal voto dello scritto (max 23 punti). Se lo studente ottiene \>30 punti, il voto includerà la lode.
+Il  **vale fino a 10 punti** nella valutazione finale. Il punteggio rimanente è dato dal voto dello scritto (max 23 punti). Se lo studente ottiene \>30 punti, il voto includerà la lode.
 - Si devono implementare almeno le API non opzionali. L’implementazione di **tutte** le API (obbligatorie + opzionali) darà il **punteggio massimo**.
 - Il superamento della pipeline CI/CD è **obbligatorio** prima della consegna.
 
@@ -53,8 +53,8 @@ Il codice da cui partire si trova al seguente link:
 ### 1. Clonare il repository
 
 ```bash
-git clone https://github.com/asotgiu/progetto_pw_26.git
-cd progetto_pw_26
+git clone https://github.com/asotgiu/project_26.git
+cd project_26
 ```
 
 ### 2. Creare e attivare un ambiente virtuale
