@@ -1,8 +1,8 @@
-from sqlmodel import SQLModel, Field
+from sqlmodel import Field, SQLModel
 
 
 class User(SQLModel, table=True):
-    """Represents a user stored in the database."""
+    """Rappresenta un utente memorizzato nel database."""
 
     username: str = Field(primary_key=True)
     name: str

@@ -1,38 +1,34 @@
-from sqlmodel import create_engine, SQLModel, Session, select
 from typing import Annotated
+
 from fastapi import Depends
-import os
-from faker import Faker
-from app.config import config
+from sqlmodel import Session, SQLModel, create_engine
 
-# Import di tutti i modelli del database.
-# Servono perché SQLModel.metadata.create_all(engine)
-# possa creare tutte le tabelle e risolvere le foreign key.
-from app.models.event import Event  # NOQA
-from app.models.user import User  # NOQA
-from app.models.registration import Registration  # NOQA
+from app.models.event import Event
+from app.models.registration import Registration
+from app.models.user import User
 
 
-sqlite_file_name = config.root_dir / "data/database.db"
+sqlite_file_name = "app/data/database.db"
 sqlite_url = f"sqlite:///{sqlite_file_name}"
+
 connect_args = {"check_same_thread": False}
-engine = create_engine(sqlite_url, connect_args=connect_args, echo=True)
+
+engine = create_engine(
+    sqlite_url,
+    connect_args=connect_args,
+    echo=True,
+)
 
 
 def init_database() -> None:
-    """Create the database tables if they do not already exist."""
-    ds_exists = os.path.isfile(sqlite_file_name)
-    SQLModel.metadata.create_all(engine)
+    """Crea le tabelle del database se non esistono."""
 
-    if not ds_exists:
-        f = Faker("it_IT")
-        with Session(engine) as session:
-            # TODO: (optional) initialize the database with fake data
-            ...
+    SQLModel.metadata.create_all(engine)
 
 
 def get_session():
-    """Return a database session used by FastAPI dependencies."""
+    """Fornisce una sessione del database."""
+
     with Session(engine) as session:
         yield session
 
