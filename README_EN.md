@@ -53,8 +53,8 @@ The starter code can be found at:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/asotgiu/project_2026.git
-cd project_2026
+git clone https://github.com/asotgiu/progetto_pw_26.git
+cd progetto_pw_26
 ```
 
 ### 2. Create and activate a virtual environment

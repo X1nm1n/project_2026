@@ -4,7 +4,12 @@ from fastapi import Depends
 import os
 from faker import Faker
 from app.config import config
-# TODO: remember to import all the DB models here
+
+# Import di tutti i modelli del database.
+# Servono perché SQLModel.metadata.create_all(engine)
+# possa creare tutte le tabelle e risolvere le foreign key.
+from app.models.event import Event  # NOQA
+from app.models.user import User  # NOQA
 from app.models.registration import Registration  # NOQA
 
 
@@ -15,8 +20,10 @@ engine = create_engine(sqlite_url, connect_args=connect_args, echo=True)
 
 
 def init_database() -> None:
+    """Create the database tables if they do not already exist."""
     ds_exists = os.path.isfile(sqlite_file_name)
     SQLModel.metadata.create_all(engine)
+
     if not ds_exists:
         f = Faker("it_IT")
         with Session(engine) as session:
@@ -25,6 +32,7 @@ def init_database() -> None:
 
 
 def get_session():
+    """Return a database session used by FastAPI dependencies."""
     with Session(engine) as session:
         yield session
 
