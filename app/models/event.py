@@ -1,10 +1,10 @@
-from datetime import datetime
+﻿from datetime import datetime
 
 from sqlmodel import Field, SQLModel
 
 
 class Event(SQLModel, table=True):
-    """Rappresenta un evento del sistema."""
+    """Rappresenta un evento memorizzato nel database."""
 
     id: int | None = Field(default=None, primary_key=True)
     title: str

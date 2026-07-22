@@ -1,11 +1,11 @@
-from typing import Annotated
+﻿from typing import Annotated
 
 from fastapi import Depends
 from sqlmodel import Session, SQLModel, create_engine
 
-from app.models.event import Event
+from app.models.event import Event  # NOQA
+from app.models.user import User  # NOQA
 from app.models.registration import Registration
-from app.models.user import User
 
 
 sqlite_file_name = "app/data/database.db"
