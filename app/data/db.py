@@ -22,9 +22,7 @@ engine = create_engine(
 
 def init_database() -> None:
     """Crea le tabelle del database se non esistono."""
-
     SQLModel.metadata.create_all(engine)
-
 
 def get_session():
     """Fornisce una sessione del database."""
