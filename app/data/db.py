@@ -4,8 +4,8 @@ from fastapi import Depends
 from sqlmodel import Session, SQLModel, create_engine
 
 from app.models.event import Event  # NOQA
+from app.models.registration import Registration  # NOQA
 from app.models.user import User  # NOQA
-from app.models.registration import Registration
 
 
 sqlite_file_name = "app/data/database.db"
@@ -24,12 +24,11 @@ def init_database() -> None:
     """Crea le tabelle del database se non esistono."""
     SQLModel.metadata.create_all(engine)
 
+
 def get_session():
     """Fornisce una sessione del database."""
-
     with Session(engine) as session:
         yield session
 
 
 SessionDep = Annotated[Session, Depends(get_session)]
-
